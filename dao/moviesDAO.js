@@ -21,7 +21,7 @@ export default class MoviesDAO{
             if("title"in filters){
                 query = {$text:{$search:filters['title']}}
             }else if("rated" in filters){
-                query = {"read":{$eq:filters['rated']}}
+                query = {"rated":{$eq:filters['rated']}}
             }
         }
         let cursor
