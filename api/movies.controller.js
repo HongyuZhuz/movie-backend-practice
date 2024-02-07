@@ -41,7 +41,6 @@ export default class MoviesController{
         try{
             
             let ratings = await MoviesDAO.getRatings()
-            console.log(ratings)
             res.json(ratings)
         }catch(e){
             console.log('api,${e}')
