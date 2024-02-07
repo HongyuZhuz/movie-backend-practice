@@ -37,4 +37,15 @@ export default class MoviesController{
             res.status(500).json({error:e})
         }
     }
+    static async apiGetRatings (req,res,next){
+        try{
+            
+            let ratings = await MoviesDAO.getRatings()
+            console.log(ratings)
+            res.json(ratings)
+        }catch(e){
+            console.log('api,${e}')
+            res.status(500).json({error:e})
+        }
+    }
 }
