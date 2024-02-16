@@ -21,7 +21,7 @@ export default class MoviesDAO{
     ){
         let query={};
         if(filters){
-            if("title"in filters){
+            if("title"in filters &&filters['title'].trim()!==""){
                 query.$text = {$search:filters['title']};
             }
             if("rated" in filters){
