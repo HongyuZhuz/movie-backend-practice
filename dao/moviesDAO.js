@@ -19,15 +19,14 @@ export default class MoviesDAO{
         moviesPerPage = 20,
     }={}
     ){
-        let query
+        let query={};
         if(filters){
             if("title"in filters){
-                query = {$text:{$search:filters['title']}}
-            }else if("rated" in filters){
-                if(filters['rated']==="All Ratings")
-                    query = {}
-               else
-                query = {"rated":{$eq:filters['rated']}}
+                query.$text = {$search:filters['title']};
+            }
+            if("rated" in filters){
+                if(filters['rated']!=="All Ratings")
+                query.rated = {$eq:filters['rated']};
             }
         }
         let cursor
