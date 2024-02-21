@@ -18,7 +18,7 @@ export default class MoviesController{
             movies:moviesList,
             page:page,
             filters:filters,
-            entries_per_pge:moviesPerPage,
+            entries_per_page:moviesPerPage,
             total_results:totalNumMovies,
         }
         res.json(response)
