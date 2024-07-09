@@ -12,5 +12,6 @@ router
     .post(ReviewsController.apiPostReview)
     .put(ReviewsController.apiUpdateReview)
     .delete(ReviewsController.apiDeleteReview)
+    .get(ReviewsController.apiGetReviewById)
 
 export default router

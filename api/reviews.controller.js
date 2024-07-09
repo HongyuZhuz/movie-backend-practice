@@ -61,4 +61,14 @@ export default class ReviewsController{
             res.status(500).json({error:e.message})
         }
     }
+
+    static async apiGetReviewById (req,res,next){
+        try{
+            const reviewId = req.body.review_id
+            const ReviewResponse = await ReviewsDAO.getReviewById(reviewId)
+            res.json(ReviewResponse)
+        }catch(e){
+            res.status(500).json({error:e.message})
+        }
+    }
 }

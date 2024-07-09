@@ -83,5 +83,28 @@ export default class ReviewsDAO{
         }
     }
 
+    static async getReviewById (reviewId){
+        try {
+            if (!ObjectId.isValid(reviewId)) {
+                console.error(`Invalid Review ID: ${reviewId}`);
+                return { error: "Invalid Review ID" };
+            }
+
+            const review = await reviews.findOne({
+                _id: new ObjectId(reviewId),
+            });
+
+            if (!review) {
+                console.error(`No review found with ID: ${reviewId}`);
+                return { error: "No review found" };
+            }
+
+            return review;
+        } catch (e) {
+            console.error(`Unable to get review: ${e}`);
+            return { error: e };
+        }
+    }
+    
 
 }
