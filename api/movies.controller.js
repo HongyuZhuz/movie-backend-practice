@@ -34,7 +34,7 @@ export default class MoviesController{
             }
             res.json(movie)
         }catch(e){
-            console.log('api,${e}')
+            console.log(`api,${e}`)
             res.status(500).json({error:e})
         }
     }
@@ -44,7 +44,7 @@ export default class MoviesController{
             let ratings = await MoviesDAO.getRatings()
             res.json(ratings)
         }catch(e){
-            console.log('api,${e}')
+            console.log(`api,${e}`)
             res.status(500).json({error:e})
         }
     }
