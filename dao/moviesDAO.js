@@ -65,12 +65,16 @@ export default class MoviesDAO{
                 },
             {$lookup:
             {
-                from:'reviews',
-                localField:'_id',
-                foreignField:'movie_id',
-                as:'reviews',
+                from: 'reviews',
+                    let: { movieId: '$_id' },
+                    pipeline: [
+                        { $match: { $expr: { $eq: ['$movie_id', '$$movieId'] } } },
+                        { $sort: { date: -1 } } 
+                    ],
+                    as: 'reviews'
             }
-        }
+        },
+        
     ]).next()
         }catch(e){
             console.error('something went wrong in getMovieById:${e}')
